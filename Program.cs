@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +16,6 @@ namespace SQLi_1
                 var user = args[0];
                 var pwd = Encrypt(args[1]);
                 Login(user, pwd);
-                Login_1(user, pwd);
             }
             catch  
             {
@@ -53,28 +52,5 @@ namespace SQLi_1
             }
            
         }
-
-private static void Login_1(string username,string password)
-        {
-            try
-            {
-                using (var conn = new SqlConnection("conn..."))
-                {
-                    var sql = "SELECT * FROM Users WHERE username = '" + username + "' AND pwd = '" + password + "'";
-                    using (var cmd = new SqlCommand(sql))
-                    {
-                        cmd.Connection = conn;
-                        cmd.ExecuteScalar();
-                    }
-
-                }
-            }
-            catch  
-            {
-
-                Console.WriteLine("An error has occurred !!");
-            }
-           
-        }        
     }
 }
